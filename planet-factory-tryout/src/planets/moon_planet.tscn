@@ -1,0 +1,21 @@
+[gd_scene load_steps=4 format=3 uid="uid://dw16een74l0hh"]
+
+[ext_resource type="Script" path="res://src/planets/moon_planet.gd" id="1_glvsn"]
+[ext_resource type="Texture2D" uid="uid://b6lo227bfotoe" path="res://src/assets/1161968966.png" id="1_ksaoh"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_m3s6e"]
+radius = 50.0
+
+[node name="StaticBody2D" type="StaticBody2D"]
+scale = Vector2(0.695, 0.695)
+input_pickable = true
+script = ExtResource("1_glvsn")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(-0.22, -0.17)
+texture = ExtResource("1_ksaoh")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_m3s6e")
+
+[connection signal="focus_planet" from="." to="." method="_on_focus_planet"]

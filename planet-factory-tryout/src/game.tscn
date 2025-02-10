@@ -1,0 +1,39 @@
+[gd_scene load_steps=7 format=3 uid="uid://bkxd1pv5f06bu"]
+
+[ext_resource type="PackedScene" uid="uid://chorn6c1t2up0" path="res://src/Character/Player.tscn" id="1_4sk17"]
+[ext_resource type="PackedScene" uid="uid://cb0imiv3uvk64" path="res://src/camera.tscn" id="1_g00i0"]
+[ext_resource type="PackedScene" uid="uid://dkdutn8hhb83o" path="res://src/planets/home_planet.tscn" id="2_2bfuj"]
+[ext_resource type="Script" path="res://src/system_1.gd" id="2_xuqdt"]
+[ext_resource type="PackedScene" uid="uid://dw16een74l0hh" path="res://src/planets/moon_planet.tscn" id="3_po33o"]
+[ext_resource type="Script" path="res://src/home_orbit.gd" id="5_s00le"]
+
+[node name="game" type="Node2D"]
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+layer = -1
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer"]
+offset_left = -35534.0
+offset_top = -29179.0
+offset_right = 33379.0
+offset_bottom = 29237.0
+mouse_filter = 2
+color = Color(0, 0, 0, 1)
+
+[node name="camera" parent="." instance=ExtResource("1_g00i0")]
+ignore_rotation = false
+
+[node name="system-1" type="Node2D" parent="."]
+script = ExtResource("2_xuqdt")
+
+[node name="player" parent="system-1" instance=ExtResource("1_4sk17")]
+position = Vector2(0, -124.88)
+input_pickable = true
+
+[node name="home-planet" parent="system-1" instance=ExtResource("2_2bfuj")]
+
+[node name="home-orbit" type="Node2D" parent="system-1"]
+script = ExtResource("5_s00le")
+
+[node name="moon-planet" parent="system-1/home-orbit" instance=ExtResource("3_po33o")]
+position = Vector2(0, -250)

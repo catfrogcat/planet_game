@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://cb0imiv3uvk64"]
+
+[ext_resource type="Script" path="res://src/camera.gd" id="1_du0n6"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_gb80f"]
+radius = 63.0079
+
+[node name="camera" type="Camera2D"]
+zoom = Vector2(0.41, 0.41)
+position_smoothing_speed = 15.0
+rotation_smoothing_enabled = true
+rotation_smoothing_speed = 40.0
+script = ExtResource("1_du0n6")
+
+[node name="Node2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_gb80f")
